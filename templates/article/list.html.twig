@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'article.list'|trans }}{% endblock %}
+
+{% block body %}
+    {{ action_link('ROLE_CAN_CREATE_ARTICLE', 'article.create.link'|trans, 'app_article_create') }}
+    <table>
+        <thead>
+            <tr>
+                <td>{{ 'article.id'|trans }}</td>
+                <td>{{ 'article.title'|trans }}</td>
+                <td>{{ 'article.author'|trans }}</td>
+                <td>{{ 'article.created_at'|trans }}</td>
+                <td>{{ 'article.updated_at'|trans }}</td>
+                <td>{{ 'article.actions'|trans }}</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.title|title }}</td>
+                <td>{{ article.author.firstName ~ ' ' ~ article.author.lastName }}</td>
+                <td>{{ article.createdAt|date('d/m/Y à H:i:s') }}</td>
+                <td>{{ article.updatedAt|date('d/m/Y à H:i:s') }}</td>
+                <td>
+                    {{ action_link('ROLE_CAN_UPDATE_ARTICLE', 'article.update.link'|trans, 'app_article_update', {id: article.id}) }}
+                    {{ action_link('ROLE_CAN_DELETE_ARTICLE', 'article.delete.link'|trans, 'app_article_delete', {id: article.id}) }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

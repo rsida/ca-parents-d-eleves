@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'article.show'|trans }} - {{ article.title|title }}{% endblock %}
+
+{% block body %}
+    {{ dump(article) }}
+{% endblock %}

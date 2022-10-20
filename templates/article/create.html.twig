@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'article.create.title'|trans }}{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.medias) }}
+
+        <button type="submit">{{ 'article.create'|trans }}</button>
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'event.list'|trans }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('lib/fullCalendar.js/main.min.css') }}"/>
+{% endblock %}
+
+{% block body %}
+    <div id="event-calendar"></div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="event-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">{{ 'event.create.form.title'|trans|title }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ 'aria.label.close'|trans|capitalize }}"></button>
+                </div>
+                <div class="modal-body">
+                    {{ form_start(form) }}
+                    <div class="mb-3">
+                        {{ form_label(form.title, null, {attr: {class: 'form-label'}}) }}
+                        {{ form_widget(form.title, {attr: {class: 'form-control'}}) }}
+                        {{ form_help(form.title, {attr: {class: 'form-text'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(form.description, null, {attr: {class: 'form-label'}}) }}
+                        {{ form_widget(form.description, {attr: {class: 'form-control'}}) }}
+                        {{ form_help(form.description, {attr: {class: 'form-text'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(form.startAt, null, {attr: {class: 'form-label'}}) }}
+                        {{ form_widget(form.startAt, {attr: {class: 'form-control'}}) }}
+                        {{ form_help(form.startAt, {attr: {class: 'form-text'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(form.endAt, null, {attr: {class: 'form-label'}}) }}
+                        {{ form_widget(form.endAt, {attr: {class: 'form-control'}}) }}
+                        {{ form_help(form.endAt, {attr: {class: 'form-text'}}) }}
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'event.create.cancel'|trans }}</button>
+                    <button type="button" class="btn btn-primary" onclick="document.forms['{{ form.vars.name }}'].submit()">
+                        {{ 'event.create.submit'|trans }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('lib/fullCalendar.js/main.min.js') }}"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarEl = document.getElementById('event-calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'timeGridWeek',
+                locale: 'fr',
+                firstDay: 1,
+                slotMinTime: '06:00',
+                slotMaxTime: '22:00',
+                selectable: true,
+                events: [
+                    {% for event in events %}
+                    {
+                        id: {{ event.id }},
+                        title: '{{ event.title|title }}',
+                        description: '{{ event.description }}',
+                        start: '{{ event.startAt|date("c") }}',
+                        end: '{{ event.endAt|date("c") }}',
+                    },
+                    {% endfor %}
+                ],
+                select: (selectionInfo) => {
+                    const start = new Date(selectionInfo.startStr);
+                    document.getElementById('{{ form.startAt.date.day.vars.id }}').value = start.getDate();
+                    document.getElementById('{{ form.startAt.date.month.vars.id }}').value = start.getMonth() + 1;
+                    document.getElementById('{{ form.startAt.date.year.vars.id }}').value = start.getFullYear();
+                    document.getElementById('{{ form.startAt.time.hour.vars.id }}').value = start.getHours();
+                    document.getElementById('{{ form.startAt.time.minute.vars.id }}').value = start.getMinutes();
+
+                    const end = new Date(selectionInfo.endStr);
+                    document.getElementById('{{ form.endAt.date.day.vars.id }}').value = end.getDate();
+                    document.getElementById('{{ form.endAt.date.month.vars.id }}').value = end.getMonth() + 1;
+                    document.getElementById('{{ form.endAt.date.year.vars.id }}').value = end.getFullYear();
+                    document.getElementById('{{ form.endAt.time.hour.vars.id }}').value = end.getHours();
+                    document.getElementById('{{ form.endAt.time.minute.vars.id }}').value = end.getMinutes();
+
+                    const myModal = new bootstrap.Modal(document.getElementById('event-modal'));
+                    myModal.toggle();
+                },
+            });
+            calendar.render();
+        });
+    </script>
+{% endblock %}

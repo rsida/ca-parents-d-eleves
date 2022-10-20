@@ -1,0 +1,6 @@
+<h1>{{ 'mail.verify.title.h1'|trans|title }}</h1>
+
+{{ 'mail.verify.content'|trans({
+    '%signedUrl%': signedUrl,
+    '%expiresAt%': expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle')
+})|raw|nl2br }}

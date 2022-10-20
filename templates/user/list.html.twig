@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'user.list'|trans }}{% endblock %}
+
+{% block body %}
+    {{ action_link('ROLE_CAN_CREATE_USER', 'user.create.link'|trans, 'app_user_create') }}
+    <table>
+        <thead>
+        <tr>
+            <td>{{ 'user.id'|trans }}</td>
+            <td>{{ 'user.gender'|trans }}</td>
+            <td>{{ 'user.firstname'|trans }}</td>
+            <td>{{ 'user.lastname'|trans }}</td>
+            <td>{{ 'user.email'|trans }}</td>
+            <td>{{ 'user.roles'|trans }}</td>
+            <td>{{ 'user.created_at'|trans }}</td>
+            <td>{{ 'user.updated_at'|trans }}</td>
+            <td>{{ 'user.actions'|trans }}</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.gender|title }}</td>
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles|join(', ') }}</td>
+                <td>{{ user.createdAt|date('d/m/Y à H:i:s') }}</td>
+                <td>{{ user.updatedAt|date('d/m/Y à H:i:s') }}</td>
+                <td>
+                    {{ action_link('ROLE_CAN_UPDATE_USER', 'user.update.link'|trans, 'app_user_update', {id: user.id}) }}
+                    {{ action_link('ROLE_CAN_DELETE_USER', 'user.delete.link'|trans, 'app_user_delete', {id: user.id}) }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

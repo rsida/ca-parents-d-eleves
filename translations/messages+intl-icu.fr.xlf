@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="AcGAzE0" resname="article.create.form.error.generic">
+        <source>article.create.form.error.generic</source>
+        <target>Des informations sont manquantes ou erronées pour créer l'article.</target>
+      </trans-unit>
+      <trans-unit id="ShJRFUu" resname="article.update.form.error.generic">
+        <source>article.update.form.error.generic</source>
+        <target>Des informations sont manquantes ou erronées pour mettre à jour l'article.</target>
+      </trans-unit>
+      <trans-unit id="J2MtluP" resname="event.create.form.success">
+        <source>event.create.form.success</source>
+        <target>L'évènement a été créé avec succès!</target>
+      </trans-unit>
+      <trans-unit id="8OqoLtd" resname="event.create.form.error.generic">
+        <source>event.create.form.error.generic</source>
+        <target>Des informations sont manquantes ou erronées pour créer l'évènement.</target>
+      </trans-unit>
+      <trans-unit id="ObXqCgh" resname="user.self_registration.success">
+        <source>user.self_registration.success</source>
+        <target>L'utilisateur a été créé avec succès!</target>
+      </trans-unit>
+      <trans-unit id="lVdcEsm" resname="mail.registration.from.title">
+        <source>mail.registration.from.title</source>
+        <target><![CDATA[CA & Parents d'élèves]]></target>
+      </trans-unit>
+      <trans-unit id="hgkaWKn" resname="mail.registration.verify.subject">
+        <source>mail.registration.verify.subject</source>
+        <target>CA - Merci de vérifier votre email</target>
+      </trans-unit>
+      <trans-unit id="v1Pgtcd" resname="mail.verify.email.success">
+        <source>mail.verify.email.success</source>
+        <target>Votre adresse email a été validée avec succès!</target>
+      </trans-unit>
+      <trans-unit id="JxPm9Lu" resname="user.create.success">
+        <source>user.create.success</source>
+        <target>L'utilisateur a été créé avec succès!</target>
+      </trans-unit>
+      <trans-unit id="N.CyZ.m" resname="user.create.error.generic">
+        <source>user.create.error.generic</source>
+        <target>Une erreur est survenue lors de la création de l'utilisateur. Merci de vérifier votre saisie ou contacter l'administrateur du site.</target>
+      </trans-unit>
+      <trans-unit id="thdR2YU" resname="user.update.could_not_self_update_error">
+        <source>user.update.could_not_self_update_error</source>
+        <target>Vous ne pouvez pas mettre à jour l'utilisateur avec lequel vous êtes connecté.</target>
+      </trans-unit>
+      <trans-unit id="Tbx0t.c" resname="user.update.success">
+        <source>user.update.success</source>
+        <target>L'utilisateur a été mis à jour avec succès!</target>
+      </trans-unit>
+      <trans-unit id="8uhXILC" resname="user.update.error.generic">
+        <source>user.update.error.generic</source>
+        <target>Une erreur est survenue lors de la mise à jour de l'utilisateur. Merci de vérifier votre saisie ou contacter l'administrateur du site.</target>
+      </trans-unit>
+      <trans-unit id="YYTi.ts" resname="user.delete.could_not_self_delete_error">
+        <source>user.delete.could_not_self_delete_error</source>
+        <target>Vous ne pouvez pas supprimer l'utilisateur avec lequel vous êtes connecté.</target>
+      </trans-unit>
+      <trans-unit id="D1ZOQhc" resname="user.delete.success">
+        <source>user.delete.success</source>
+        <target>L'utilisateur a été supprimé avec succès!</target>
+      </trans-unit>
+      <trans-unit id="RTSJyQJ" resname="app.title.main">
+        <source>app.title.main</source>
+        <target><![CDATA[CA & parents d'élèves]]></target>
+      </trans-unit>
+      <trans-unit id="4H8YSra" resname="articles.menu.main">
+        <source>articles.menu.main</source>
+        <target>Nos articles</target>
+      </trans-unit>
+      <trans-unit id="hat2bNw" resname="users.menu.main">
+        <source>users.menu.main</source>
+        <target>Les membres</target>
+      </trans-unit>
+      <trans-unit id="iqvcj6R" resname="events.menu.main">
+        <source>events.menu.main</source>
+        <target>Le Calendrier des évènements</target>
+      </trans-unit>
+      <trans-unit id="fsPA3_F" resname="event.list">
+        <source>event.list</source>
+        <target>Liste des évènements</target>
+      </trans-unit>
+      <trans-unit id="oIX7o3o" resname="event.create.cancel">
+        <source>event.create.cancel</source>
+        <target>Annuler</target>
+      </trans-unit>
+      <trans-unit id="eEEX4AM" resname="event.create.submit">
+        <source>event.create.submit</source>
+        <target>Créer</target>
+      </trans-unit>
+      <trans-unit id="eYrXCdA" resname="article.create">
+        <source>article.create</source>
+        <target>Créer</target>
+      </trans-unit>
+      <trans-unit id="yAxzhhm" resname="article.list">
+        <source>article.list</source>
+        <target>Liste des articles</target>
+      </trans-unit>
+      <trans-unit id="gg3qv3i" resname="article.create.link">
+        <source>article.create.link</source>
+        <target>Nouvelle article</target>
+      </trans-unit>
+      <trans-unit id="cK69O0F" resname="article.id">
+        <source>article.id</source>
+        <target>#ID</target>
+      </trans-unit>
+      <trans-unit id="Iasdgr0" resname="article.title">
+        <source>article.title</source>
+        <target>Titre</target>
+      </trans-unit>
+      <trans-unit id="jHzFINk" resname="article.author">
+        <source>article.author</source>
+        <target>Auteur</target>
+      </trans-unit>
+      <trans-unit id="Z9px1.X" resname="article.created_at">
+        <source>article.created_at</source>
+        <target>Créé le</target>
+      </trans-unit>
+      <trans-unit id="LVEuths" resname="article.updated_at">
+        <source>article.updated_at</source>
+        <target>Dernière mise à jour le</target>
+      </trans-unit>
+      <trans-unit id="GFUZzei" resname="article.actions">
+        <source>article.actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="khRYSHr" resname="article.update.link">
+        <source>article.update.link</source>
+        <target>Mettre à jour</target>
+      </trans-unit>
+      <trans-unit id="0JLNCyw" resname="article.delete.link">
+        <source>article.delete.link</source>
+        <target>Supprimer</target>
+      </trans-unit>
+      <trans-unit id="epeoCRg" resname="article.update">
+        <source>article.update</source>
+        <target>Mettre à jour</target>
+      </trans-unit>
+      <trans-unit id="zPJhxi6" resname="user.create">
+        <source>user.create</source>
+        <target>Créer</target>
+      </trans-unit>
+      <trans-unit id="KhLRwqK" resname="user.create.submit_button">
+        <source>user.create.submit_button</source>
+        <target>Créer</target>
+      </trans-unit>
+      <trans-unit id="MjlRaK9" resname="user.list">
+        <source>user.list</source>
+        <target>Liste des membres</target>
+      </trans-unit>
+      <trans-unit id="8MBvbAa" resname="user.create.link">
+        <source>user.create.link</source>
+        <target>Nouveau membre</target>
+      </trans-unit>
+      <trans-unit id="9PCVAdj" resname="user.id">
+        <source>user.id</source>
+        <target>#ID</target>
+      </trans-unit>
+      <trans-unit id="VzATpIb" resname="user.gender">
+        <source>user.gender</source>
+        <target>Sexe</target>
+      </trans-unit>
+      <trans-unit id="Hfoseqh" resname="user.firstname">
+        <source>user.firstname</source>
+        <target>Prénom</target>
+      </trans-unit>
+      <trans-unit id="JPNb_dA" resname="user.lastname">
+        <source>user.lastname</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="YfUYcGV" resname="user.email">
+        <source>user.email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="AGWtOG4" resname="user.roles">
+        <source>user.roles</source>
+        <target>Roles</target>
+      </trans-unit>
+      <trans-unit id="M3FeYBy" resname="user.created_at">
+        <source>user.created_at</source>
+        <target>Créé le</target>
+      </trans-unit>
+      <trans-unit id="d7.wQU3" resname="user.updated_at">
+        <source>user.updated_at</source>
+        <target>Dernière mise à jour le</target>
+      </trans-unit>
+      <trans-unit id="HoajZE." resname="user.actions">
+        <source>user.actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="N_T6tNG" resname="user.update.link">
+        <source>user.update.link</source>
+        <target>Mettre à jour</target>
+      </trans-unit>
+      <trans-unit id="2NZ8uHl" resname="user.delete.link">
+        <source>user.delete.link</source>
+        <target>Supprimer</target>
+      </trans-unit>
+      <trans-unit id="FMZWixk" resname="user.update.submit_button">
+        <source>user.update.submit_button</source>
+        <target>Mettre à jour</target>
+      </trans-unit>
+      <trans-unit id="7gDO6IQ" resname="aria.label.close">
+        <source>aria.label.close</source>
+        <target>Fermer</target>
+      </trans-unit>
+      <trans-unit id="JnQj4xR" resname="user.login.form.email">
+        <source>user.login.form.email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="rcZFYQn" resname="user.password.form.email">
+        <source>user.password.form.email</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="oLfu4oi" resname="user.login.form.submit_button">
+        <source>user.login.form.submit_button</source>
+        <target>M'authentifier</target>
+      </trans-unit>
+      <trans-unit id="n87FxE5" resname="mail.verify.title.h1">
+        <source>mail.verify.title.h1</source>
+        <target>Merci de vérifier votre adresse mail</target>
+      </trans-unit>
+      <trans-unit id="c.LVyNh" resname="mail.verify.content">
+        <source>mail.verify.content</source>
+        <target><![CDATA[
+
+  <p>
+    Merci de bien vouloir cliquer sur le lien suivant pour valider votre adresse mail: <br><br>
+    <a href="{signedUrl}">Confirmer mon email</a>.
+    Ce lien expire dans {expiresAt}.
+  </p>
+
+  <p>
+    Bonne journée,
+    L'équipe du CA & Parents d'Élèves
+  </p>
+
+        ]]></target>
+      </trans-unit>
+      <trans-unit id="TDG1BLD" resname="user.registration.page.title">
+        <source>user.registration.page.title</source>
+        <target>Créer un compte membre</target>
+      </trans-unit>
+      <trans-unit id="enesNVl" resname="user.registration.title">
+        <source>user.registration.title</source>
+        <target>Créer un compte membre</target>
+      </trans-unit>
+      <trans-unit id="NXGB4MX" resname="user.registration.form.submit_button">
+        <source>user.registration.form.submit_button</source>
+        <target>Créer le compte</target>
+      </trans-unit>
+      <trans-unit id="bFS5J17" resname="event.create.form.title">
+        <source>event.create.form.title</source>
+        <target>Ajouter un évènement</target>
+      </trans-unit>
+      <trans-unit id="32Yq2sd" resname="article.create.title">
+        <source>article.create.title</source>
+        <target>Ajouter un article</target>
+      </trans-unit>
+      <trans-unit id="pn9eo5U" resname="article.update.title">
+        <source>article.update.title</source>
+        <target>Mettre à jour un article</target>
+      </trans-unit>
+      <trans-unit id="QZJnf_V" resname="user.create.title">
+        <source>user.create.title</source>
+        <target>Créer un compte membre</target>
+      </trans-unit>
+      <trans-unit id="bdKkYeL" resname="user.update.title">
+        <source>user.update.title</source>
+        <target>Mettre à jour</target>
+      </trans-unit>
+      <trans-unit id="NLhvuDD" resname="aria.toggle_navigation">
+        <source>aria.toggle_navigation</source>
+        <target>Basculer la navigation</target>
+      </trans-unit>
+      <trans-unit id="Xcx6f8R" resname="user.login.title">
+        <source>user.login.title</source>
+        <target>Me connecter</target>
+      </trans-unit>
+      <trans-unit id="6YApBxD" resname="page.login.title">
+        <source>page.login.title</source>
+        <target>Page d'authentification</target>
+      </trans-unit>
+      <trans-unit id="G3DJtVH" resname="logout.menu.main">
+        <source>logout.menu.main</source>
+        <target>Déconnexion</target>
+      </trans-unit>
+      <trans-unit id="yuK9Qfa" resname="login.menu.main">
+        <source>login.menu.main</source>
+        <target>Se connecter</target>
+      </trans-unit>
+      <trans-unit id="3P24U.9" resname="home.title">
+        <source>home.title</source>
+        <target><![CDATA[Le CA & Parent d'élèves]]></target>
+      </trans-unit>
+      <trans-unit id="CF0R1Vn" resname="home.main.title">
+        <source>home.main.title</source>
+        <target><![CDATA[Bienvenue au CA & Parents d'élèves]]></target>
+      </trans-unit>
+      <trans-unit id="AtBhXOn" resname="home.main.description">
+        <source>home.main.description</source>
+        <target>Nous sommes là pour vous informer et vous apporter notre aide!</target>
+      </trans-unit>
+      <trans-unit id="TFPa6Gz" resname="article.show.date">
+        <source>article.show.date</source>
+        <target>Le {date} à {hour}</target>
+      </trans-unit>
+      <trans-unit id="M3lfMwS" resname="article.show.show_more">
+        <source>article.show.show_more</source>
+        <target>Lire la suite</target>
+      </trans-unit>
+      <trans-unit id="1kNN5ZC" resname="article.show">
+        <source>article.show</source>
+        <target>Détails de l'article</target>
+      </trans-unit>
+      <trans-unit id="PCPiENo" resname="home.menu.main">
+        <source>home.menu.main</source>
+        <target>Accueil</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

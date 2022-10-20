@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ path('app_home') }}">{{ 'app.title.main'|trans|title }}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="{{ 'aria.toggle_navigation'|trans|capitalize }}">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link{% if 'home' == page %} active" aria-current="page{% endif %}" href="{{ path('app_home') }}">
+                        {{ 'home.menu.main'|trans|title }}
+                    </a>
+                </li>
+                {% if is_granted('ROLE_CAN_SHOW_ARTICLE') %}
+                <li class="nav-item">
+                    <a class="nav-link{% if 'articles' == page %} active" aria-current="page{% endif %}" href="{{ path('app_article_list') }}">
+                        {{ 'articles.menu.main'|trans|title }}
+                    </a>
+                </li>
+                {% endif %}
+                {% if is_granted('ROLE_CAN_SHOW_USER') %}
+                <li class="nav-item">
+                    <a class="nav-link{% if 'users' == page %} active" aria-current="page{% endif %}" href="{{ path('app_user_list') }}">
+                        {{ 'users.menu.main'|trans|title }}
+                    </a>
+                </li>
+                {% endif %}
+                {% if is_granted('ROLE_CAN_SHOW_EVENT') %}
+                <li class="nav-item">
+                    <a class="nav-link{% if 'events' == page %} active" aria-current="page{% endif %}" href="{{ path('app_event_list') }}">
+                        {{ 'events.menu.main'|trans|title }}
+                    </a>
+                </li>
+                {% endif %}
+                {% if is_granted('ROLE_USER') %}
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-danger" href="{{ path('app_logout') }}">
+                            {{ 'logout.menu.main'|trans|title }}
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-primary{% if 'login' == page %} active" aria-current="page{% endif %}" href="{{ path('app_login') }}">
+                            {{ 'login.menu.main'|trans|title }}
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

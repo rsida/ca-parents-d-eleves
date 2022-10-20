@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'user.update.title'|trans }}{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+        {{ form_row(form.roles) }}
+        {{ form_row(form.gender) }}
+        {{ form_row(form.firstName) }}
+        {{ form_row(form.lastName) }}
+
+        <button type="submit">{{ 'user.update.submit_button'|trans }}</button>
+    {{ form_end(form) }}
+{% endblock %}

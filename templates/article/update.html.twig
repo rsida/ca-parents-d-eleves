@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'article.update.title'|trans }}{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.description) }}
+
+    <button type="submit">{{ 'article.update'|trans }}</button>
+    {{ form_end(form) }}
+{% endblock %}
