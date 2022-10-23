@@ -2,22 +2,23 @@
 
 namespace App\Event;
 
-use App\Entity\User;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class UserEvent
 {
-    public const ON_USER_CREATE = 'onUserCreate';
+    public const USER_CREATE = 'onUserCreate';
+    public const SEND_NEW_VERIFICATION_MAIL = 'onSendNewVerificationMail';
 
-    private User $user;
+    private UserInterface $user;
     private array $context;
 
-    public function __construct(User $user, array $context = [])
+    public function __construct(UserInterface $user, array $context = [])
     {
         $this->user = $user;
         $this->context = $context;
     }
 
-    public function getUser(): User
+    public function getUser(): UserInterface
     {
         return $this->user;
     }

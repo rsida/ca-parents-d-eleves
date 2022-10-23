@@ -108,18 +108,25 @@ class ArticleController extends AbstractController
 
     #[Route('/', name: 'app_article_list', methods: ['GET'])]
     #[IsGranted('ROLE_CAN_SHOW_ARTICLE')]
-    public function displayList(ArticleRepository $articleRepository): Response
+    public function displayList(Request $request, ArticleRepository $articleRepository): Response
     {
+        $page = $request->query->get('page', 1);
+        $limit = $request->query->get('limit', 10);
+
         return $this->render('article/list.html.twig', [
-            'articles' => $articleRepository->findByCriteria([
-                'author' => $this->getUser(),
-            ]),
             'currentPage' => 'articles',
+            'currentPageIndex' => $page,
+            'currentLimit' => $limit,
+            'articles' => $articleRepository->findByCriteria([
+                'query' => $request->query->get('query')
+            ], $page, $limit),
+            'numberOfPage' => $articleRepository->getNumberOfPageFromFindByCriteria([
+                'query' => $request->query->get('query')
+            ], $limit),
         ]);
     }
 
     #[Route('/{slug}', name: 'app_article_show', methods: ['GET'])]
-    #[IsGranted('ROLE_CAN_SHOW_ARTICLE')]
     public function show(ArticleRepository $articleRepository, string $slug): Response
     {
         return $this->render('article/show.html.twig', [

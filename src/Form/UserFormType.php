@@ -4,23 +4,22 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Security;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class UserFormType extends AbstractType
 {
     private Security $security;
+    private TranslatorInterface $translator;
     private array $hierarchyRoles;
 
-    public function __construct(Security $security, array $hierarchyRoles)
+    public function __construct(Security $security, TranslatorInterface $translator, array $hierarchyRoles)
     {
         $this->security = $security;
+        $this->translator = $translator;
         $this->hierarchyRoles = $hierarchyRoles;
     }
 
@@ -35,7 +34,7 @@ class UserFormType extends AbstractType
                 },
             ])
             ->add('gender', ChoiceType::class, [
-                'choices' => array_combine(User::GENDERS, User::GENDERS),
+                'choices' => array_flip(User::TRANS_GENDERS),
             ])
             ->add('firstName')
             ->add('lastName')

@@ -94,7 +94,7 @@ class UserNewCommand extends Command
         } while ($io->confirm('Add another role?'));
 
         $this->userRepository->save($user, true);
-        $this->dispatcher->dispatch(new UserEvent($user), UserEvent::ON_USER_CREATE);
+        $this->dispatcher->dispatch(new UserEvent($user), UserEvent::USER_CREATE);
 
         return Command::SUCCESS;
     }

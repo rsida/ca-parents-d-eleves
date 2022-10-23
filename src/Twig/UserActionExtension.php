@@ -35,7 +35,7 @@ class UserActionExtension extends AbstractExtension
 
         $attributesString = '';
         foreach ($attributes as $attribute => $value) {
-            $attributesString .= sprintf('%s="%s", ', $attribute, $value);
+            $attributesString .= sprintf('%s="%s" ', $attribute, $value);
         }
 
         return sprintf('<a href="%s" %s>%s</a>', $this->urlGenerator->generate($path, $parameters), $attributesString, $label);

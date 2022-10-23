@@ -3,32 +3,89 @@
 {% block title %}{{ 'article.list'|trans }}{% endblock %}
 
 {% block body %}
-    {{ action_link('ROLE_CAN_CREATE_ARTICLE', 'article.create.link'|trans, 'app_article_create') }}
-    <table>
-        <thead>
-            <tr>
-                <td>{{ 'article.id'|trans }}</td>
-                <td>{{ 'article.title'|trans }}</td>
-                <td>{{ 'article.author'|trans }}</td>
-                <td>{{ 'article.created_at'|trans }}</td>
-                <td>{{ 'article.updated_at'|trans }}</td>
-                <td>{{ 'article.actions'|trans }}</td>
-            </tr>
-        </thead>
-        <tbody>
-            {% for article in articles %}
-            <tr>
-                <td>{{ article.id }}</td>
-                <td>{{ article.title|title }}</td>
-                <td>{{ article.author.firstName ~ ' ' ~ article.author.lastName }}</td>
-                <td>{{ article.createdAt|date('d/m/Y à H:i:s') }}</td>
-                <td>{{ article.updatedAt|date('d/m/Y à H:i:s') }}</td>
-                <td>
-                    {{ action_link('ROLE_CAN_UPDATE_ARTICLE', 'article.update.link'|trans, 'app_article_update', {id: article.id}) }}
-                    {{ action_link('ROLE_CAN_DELETE_ARTICLE', 'article.delete.link'|trans, 'app_article_delete', {id: article.id}) }}
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="container-fluid">
+        <div class="row">
+            <table class="table">
+                <thead class="table-dark">
+                    <tr>
+                        <td colspan="4" class="align-middle">
+                            {{ action_link('ROLE_CAN_CREATE_ARTICLE', 'article.create.link'|trans, 'app_article_create', [], {
+                                'class': 'btn btn-primary',
+                            }) }}
+                        </td>
+                        <td class="align-middle">
+                            <form method="get">
+                                <div class="input-group">
+                                    <input class="form-control" type="text" name="query" placeholder="{{ 'article.search.field.placeholder'|trans }}" aria-label="{{ 'article.search.field.label'|trans }}" aria-describedby="button-search">
+                                    <button class="btn btn-primary" id="button-search" type="submit">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </td>
+                        <td class="align-middle">
+                            <!-- Pagination-->
+                            {% if numberOfPage > 1 %}
+                                <nav aria-label="{{ 'aria.label.pagination'|trans }}">
+                                    <ul class="pagination justify-content-center my-4">
+                                        {% for i in 1..numberOfPage %}
+                                            <li class="page-item{% if currentPageIndex == i %} active" aria-current="page{% endif %}">
+                                                <a class="page-link" href="{{ path('app_article_list', {
+                                                    page: i,
+                                                    limit: currentLimit
+                                                }) }}">{{ i }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </nav>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'article.id'|trans }}</td>
+                        <td>{{ 'article.title'|trans }}</td>
+                        <td>{{ 'article.author'|trans }}</td>
+                        <td>{{ 'article.created_at'|trans }}</td>
+                        <td>{{ 'article.updated_at'|trans }}</td>
+                        <td>{{ 'article.actions'|trans }}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for article in articles %}
+                    <tr>
+                        <td>{{ article.id }}</td>
+                        <td>{{ article.title|title }}</td>
+                        <td>{{ article.author.firstName ~ ' ' ~ article.author.lastName }}</td>
+                        <td>{{ article.createdAt|date('d/m/Y à H:i:s') }}</td>
+                        <td>{{ article.updatedAt|date('d/m/Y à H:i:s') }}</td>
+                        <td>
+                            {{ action_link('ROLE_CAN_SHOW_ARTICLE', '<i class="bi bi-eye"></i>', 'app_article_show', {slug: article.slug}, {
+                                'class': 'btn btn-secondary',
+                            }) }}
+                            {{ action_link('ROLE_CAN_UPDATE_ARTICLE', '<i class="bi bi-pencil-square"></i>', 'app_article_update', {id: article.id}, {
+                                'class': 'btn btn-secondary',
+                            }) }}
+                            {{ action_link('ROLE_CAN_DELETE_ARTICLE', '<i class="bi bi-trash"></i>', 'app_article_delete', {id: article.id}, {
+                                'class': 'btn btn-danger',
+                            }) }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(function() {
+            $('td.tab-row-actions').on('click', (e) => {
+                if (!confirm('{{ 'article.delete.ask_confirmation'|trans|capitalize }}')) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
 {% endblock %}

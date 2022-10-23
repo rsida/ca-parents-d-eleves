@@ -23,7 +23,8 @@ class UserSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            UserEvent::ON_USER_CREATE => 'sendVerificationEmailOnNewUser',
+            UserEvent::USER_CREATE => 'sendVerificationEmailOnNewUser',
+            UserEvent::SEND_NEW_VERIFICATION_MAIL => 'sendVerificationEmailOnNewUser',
         ];
     }
 

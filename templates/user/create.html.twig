@@ -3,14 +3,39 @@
 {% block title %}{{ 'user.create.title'|trans }}{% endblock %}
 
 {% block body %}
-    {{ form_start(form) }}
-        {{ form_row(form.email) }}
-        {{ form_row(form.plainPassword) }}
-        {{ form_row(form.roles) }}
-        {{ form_row(form.gender) }}
-        {{ form_row(form.firstName) }}
-        {{ form_row(form.lastName) }}
+    <div class="container">
+        <div class="row mt-4">
+            <h1>{{ 'user.create.title'|trans }}</h1>
 
-        <button type="submit">{{ 'user.create.submit_button'|trans }}</button>
-    {{ form_end(form) }}
+            {{ form_start(form) }}
+            <div class="mb-3">
+                {{ form_label(form.email, 'user.create.field.email'|trans, {attr: {class: 'form-label'}}) }}
+                {{ form_widget(form.email, {attr: {class: 'form-control'}}) }}
+            </div>
+            <div class="mb-3">
+                {{ form_label(form.plainPassword, 'user.create.field.password'|trans, {attr: {class: 'form-label'}}) }}
+                {{ form_widget(form.plainPassword, {attr: {class: 'form-control'}}) }}
+            </div>
+            <div class="mb-3">
+                {{ form_label(form.gender, 'user.create.field.gender'|trans, {attr: {class: 'form-label'}}) }}
+                {{ form_widget(form.gender, {attr: {class: 'form-select'}}) }}
+            </div>
+            <div class="mb-3">
+                {{ form_label(form.firstName, 'user.create.field.first_name'|trans, {attr: {class: 'form-label'}}) }}
+                {{ form_widget(form.firstName, {attr: {class: 'form-control'}}) }}
+            </div>
+            <div class="mb-3">
+                {{ form_label(form.lastName, 'user.create.field.last_name'|trans, {attr: {class: 'form-label'}}) }}
+                {{ form_widget(form.lastName, {attr: {class: 'form-control'}}) }}
+            </div>
+            <div class="mb-3">
+                {{ form_label(form.roles, 'user.create.field.roles'|trans, {attr: {class: 'form-label'}}) }}
+                {{ form_widget(form.roles, {attr: {class: 'form-select'}}) }}
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">{{ 'user.create.submit_button'|trans }}</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}

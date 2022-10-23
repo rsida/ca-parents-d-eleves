@@ -46,7 +46,7 @@ class CreateUserFormType extends AbstractType
                 },
             ])
             ->add('gender', ChoiceType::class, [
-                'choices' => array_combine(User::GENDERS, User::GENDERS),
+                'choices' => array_flip(User::TRANS_GENDERS),
             ])
             ->add('firstName')
             ->add('lastName')

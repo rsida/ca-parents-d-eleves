@@ -3,5 +3,55 @@
 {% block title %}{{ 'article.show'|trans }} - {{ article.title|title }}{% endblock %}
 
 {% block body %}
-    {{ dump(article) }}
+    <div class="container">
+        <div class="row mt-4">
+            <!-- Article content -->
+            <div class="col-lg-8">
+                <!-- Carousel -->
+                <div id="articleCarousel" class="carousel slide border" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        {% for media in article.medias %}
+                        <button type="button" data-bs-target="#articleCarousel" data-bs-slide-to="{{ (loop.index - 1) }}" {% if (loop.index - 1) == 0 %}class="active" aria-current="true"{% endif %} aria-label="{{ media.originalName }}"></button>
+                        {% endfor %}
+                    </div>
+                    <div class="carousel-inner">
+                        {% for media in article.medias %}
+                        <div class="carousel-item{% if (loop.index - 1) == 0 %} active{% endif %}">
+                            <img src="{{ asset(media.fullPath) }}" class="d-block w-100" alt="{{ media.originalName }}">
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#articleCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">{{ 'carousel.previous'|trans }}</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#articleCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">{{ 'carousel.next'|trans }}</span>
+                    </button>
+                </div>
+
+                <!-- -->
+                <main class="mt-2">
+                    <h1>{{ article.title|capitalize }}</h1>
+
+                    {{ article.description|raw }}
+                </main>
+            </div>
+
+            <!-- Article information -->
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-header">{{ 'article.details'|trans|capitalize }}</div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">{{ 'article.author'|trans|capitalize }}: {{ article.author.fullName }}</li>
+                            <li class="list-group-item">{{ 'article.created_at'|trans|capitalize }}: {{ article.createdAt|date('d/m/Y à H:i') }}</li>
+                            <li class="list-group-item">{{ 'article.updated_at'|trans|capitalize }}: {{ article.updatedAt|date('d/m/Y à H:i') }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -9,17 +9,9 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Security\Core\Security;
 
 class EventFormType extends AbstractType
 {
-    private Security $security;
-
-    public function __construct(Security $security)
-    {
-        $this->security = $security;
-    }
-
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -33,9 +25,7 @@ class EventFormType extends AbstractType
                 'expanded' => true,
                 'choice_label' => 'email',
                 'query_builder' => function(UserRepository $userRepository) {
-                    return $userRepository->createFindByCriteriaQueryBuilder([
-                        'notUsers' => [$this->security->getUser()],
-                    ]);
+                    return $userRepository->createFindByCriteriaQueryBuilder();
                 }
             ])
         ;

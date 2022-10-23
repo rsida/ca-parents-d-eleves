@@ -17,7 +17,15 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    public const GENDERS = ['male', 'female'];
+    public const GENDER_MALE = 'male';
+    public const GENDER_FEMALE = 'female';
+    public const GENDERS = [self::GENDER_MALE, self::GENDER_FEMALE];
+    public const TRANS_KEY_GENDER_MALE = 'user.male';
+    public const TRANS_KEY_GENDER_FEMALE = 'user.female';
+    public const TRANS_GENDERS = [
+        self::GENDER_MALE => self::TRANS_KEY_GENDER_MALE,
+        self::GENDER_FEMALE => self::TRANS_KEY_GENDER_FEMALE,
+    ];
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -48,6 +56,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'boolean')]
     private bool $isVerified = false;
+
+    #[ORM\Column(type: 'boolean')]
+    private bool $isActive = true;
 
     #[ORM\Column]
     #[Gedmo\Timestampable(on: 'create')]
@@ -196,6 +207,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function isActive(): bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
@@ -302,5 +325,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->events->removeElement($event);
 
         return $this;
+    }
+
+    public function getFullName(): string
+    {
+        return ucfirst(strtolower($this->firstName)).' '.strtoupper($this->lastName);
+    }
+
+    public function getTransKeyGender(?string $gender = null): string
+    {
+        if (is_string($gender) && !array_key_exists($gender, self::TRANS_GENDERS)) {
+            throw new \InvalidArgumentException('Given gender is invalid');
+        }
+
+        return self::TRANS_GENDERS[$gender ?? $this->gender];
     }
 }

@@ -3,38 +3,92 @@
 {% block title %}{{ 'user.list'|trans }}{% endblock %}
 
 {% block body %}
-    {{ action_link('ROLE_CAN_CREATE_USER', 'user.create.link'|trans, 'app_user_create') }}
-    <table>
-        <thead>
-        <tr>
-            <td>{{ 'user.id'|trans }}</td>
-            <td>{{ 'user.gender'|trans }}</td>
-            <td>{{ 'user.firstname'|trans }}</td>
-            <td>{{ 'user.lastname'|trans }}</td>
-            <td>{{ 'user.email'|trans }}</td>
-            <td>{{ 'user.roles'|trans }}</td>
-            <td>{{ 'user.created_at'|trans }}</td>
-            <td>{{ 'user.updated_at'|trans }}</td>
-            <td>{{ 'user.actions'|trans }}</td>
-        </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.gender|title }}</td>
-                <td>{{ user.firstName }}</td>
-                <td>{{ user.lastName }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.roles|join(', ') }}</td>
-                <td>{{ user.createdAt|date('d/m/Y à H:i:s') }}</td>
-                <td>{{ user.updatedAt|date('d/m/Y à H:i:s') }}</td>
-                <td>
-                    {{ action_link('ROLE_CAN_UPDATE_USER', 'user.update.link'|trans, 'app_user_update', {id: user.id}) }}
-                    {{ action_link('ROLE_CAN_DELETE_USER', 'user.delete.link'|trans, 'app_user_delete', {id: user.id}) }}
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="container-fluid">
+        <div class="row">
+            <table class="table">
+                <thead class="table-dark">
+                    <tr>
+                        <td colspan="7" class="align-middle">
+                            {{ action_link('ROLE_CAN_CREATE_USER', 'user.create.link'|trans, 'app_user_create', [], {
+                                'class': 'btn btn-primary',
+                            }) }}
+                        </td>
+                        <td class="align-middle">
+                            <form method="get">
+                                <div class="input-group">
+                                    <input class="form-control" type="text" name="query" placeholder="{{ 'user.search.field.placeholder'|trans }}" aria-label="{{ 'user.search.field.label'|trans }}" aria-describedby="button-search">
+                                    <button class="btn btn-primary" id="button-search" type="submit">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </td>
+                        <td class="align-middle">
+                            <!-- Pagination-->
+                            {% if numberOfPage > 1 %}
+                                <nav aria-label="{{ 'aria.label.pagination'|trans }}">
+                                    <ul class="pagination justify-content-center my-4">
+                                        {% for i in 1..numberOfPage %}
+                                            <li class="page-item{% if currentPageIndex == i %} active" aria-current="page{% endif %}">
+                                                <a class="page-link" href="{{ path('app_user_list', {
+                                                    page: i,
+                                                    limit: currentLimit
+                                                }) }}">{{ i }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </nav>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'user.id'|trans }}</td>
+                        <td>{{ 'user.gender'|trans }}</td>
+                        <td>{{ 'user.firstname'|trans }}</td>
+                        <td>{{ 'user.lastname'|trans }}</td>
+                        <td>{{ 'user.email'|trans }}</td>
+                        <td>{{ 'user.roles'|trans }}</td>
+                        <td>{{ 'user.created_at'|trans }}</td>
+                        <td>{{ 'user.updated_at'|trans }}</td>
+                        <td>{{ 'user.actions'|trans }}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.transKeyGender|trans|title }}</td>
+                        <td>{{ user.firstName }}</td>
+                        <td>{{ user.lastName }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.roles|join(', ') }}</td>
+                        <td>{{ user.createdAt|date('d/m/Y à H:i:s') }}</td>
+                        <td>{{ user.updatedAt|date('d/m/Y à H:i:s') }}</td>
+                        <td class="tab-row-actions">
+                            {{ action_link('ROLE_CAN_UPDATE_USER', '<i class="bi bi-pencil-square"></i>', 'app_user_update', {id: user.id}, {
+                                'class': 'btn btn-secondary',
+                            }) }}
+                            {{ action_link('ROLE_CAN_DELETE_USER', '<i class="bi bi-trash"></i>', 'app_user_delete', {id: user.id}, {
+                                'class': 'btn btn-danger',
+                            }) }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+    $(function() {
+        $('td.tab-row-actions').on('click', (e) => {
+            if (!confirm('{{ 'user.delete.ask_confirmation'|trans|capitalize }}')) {
+                e.preventDefault();
+            }
+        });
+    });
+    </script>
 {% endblock %}

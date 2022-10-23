@@ -1,0 +1,26 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            {{ 'event.modal.header.date'|trans({
+                startDate: event.startAt|date('d/m/y'),
+                startHour: event.startAt|date('H:i'),
+                endDate: event.endAt|date('d/m/y'),
+                endHour: event.endAt|date('H:i'),
+            }) }}
+        </div>
+        <div class="modal-body">
+            <h5 class="card-title">{{ event.title|capitalize }}</h5>
+            <p class="card-text">{{ event.description }}</p>
+            {#        <a href="#" class="btn btn-primary">Go somewhere</a>#}
+
+            <ul class="list-group">
+                {% for participant in event.participants %}
+                    <li class="list-group-item">{{ participant.fullName }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'event.modal.footer.close_button'|trans }}</button>
+        </div>
+    </div>
+</div>

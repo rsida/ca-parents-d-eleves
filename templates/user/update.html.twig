@@ -3,12 +3,31 @@
 {% block title %}{{ 'user.update.title'|trans }}{% endblock %}
 
 {% block body %}
-    {{ form_start(form) }}
-        {{ form_row(form.roles) }}
-        {{ form_row(form.gender) }}
-        {{ form_row(form.firstName) }}
-        {{ form_row(form.lastName) }}
+    <div class="container">
+        <div class="row mt-4">
+            <h1>{{ 'user.update.title'|trans }}</h1>
 
-        <button type="submit">{{ 'user.update.submit_button'|trans }}</button>
-    {{ form_end(form) }}
+            {{ form_start(form) }}
+            <div class="mb-3">
+                {{ form_label(form.gender, 'user.update.field.gender'|trans, {attr: {class: 'form-label'}}) }}
+                {{ form_widget(form.gender, {attr: {class: 'form-select'}}) }}
+            </div>
+            <div class="mb-3">
+                {{ form_label(form.firstName, 'user.update.field.first_name'|trans, {attr: {class: 'form-label'}}) }}
+                {{ form_widget(form.firstName, {attr: {class: 'form-control'}}) }}
+            </div>
+            <div class="mb-3">
+                {{ form_label(form.lastName, 'user.update.field.last_name'|trans, {attr: {class: 'form-label'}}) }}
+                {{ form_widget(form.lastName, {attr: {class: 'form-control'}}) }}
+            </div>
+            <div class="mb-3">
+                {{ form_label(form.roles, 'user.update.field.roles'|trans, {attr: {class: 'form-label'}}) }}
+                {{ form_widget(form.roles, {attr: {class: 'form-select'}}) }}
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">{{ 'user.update.submit_button'|trans }}</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}

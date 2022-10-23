@@ -1,7 +1,3 @@
-body {
-    background-color: lightgray;
-}
-
 .rounded-t-5 {
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
@@ -15,4 +11,8 @@ body {
     .rounded-bl-lg-5 {
         border-bottom-left-radius: 0.5rem;
     }
+}
+
+.fc-toolbar-title {
+    text-transform: capitalize;
 }

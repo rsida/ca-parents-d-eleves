@@ -14,7 +14,11 @@ class ArticleFormType extends AbstractType
     {
         $builder
             ->add('title', TextType::class)
-            ->add('description', TextareaType::class)
+            ->add('description', TextareaType::class, [
+                'attr' => [
+                    'class' => 'tiny-mce-textarea',
+                ],
+            ])
             ->add('medias', FileType::class, [
                 'required' => false,
                 'mapped' => false,

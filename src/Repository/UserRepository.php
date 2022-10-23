@@ -67,12 +67,31 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
                 ->setParameter('notUsers', $criteria['notUsers']);
         }
 
+        if (!empty($criteria['query'])) {
+            $qb->andWhere('(u.firstName LIKE :query OR u.lastName LIKE :query OR u.email LIKE :query)')
+                ->setParameter('query', '%'.$criteria['query'].'%');
+        }
+
+
         return $qb;
     }
 
-    public function findByCriteria(array $criteria = []): array
+    public function getNumberOfPageFromFindByCriteria(array $criteria = [], int $limit = 10): int
     {
-        return $this->createFindByCriteriaQueryBuilder($criteria)->getQuery()->getResult();
+        $qb = $this->createFindByCriteriaQueryBuilder($criteria);
+        $qb->select('count(u.id)');
+        return ceil($qb->getQuery()->getSingleColumnResult()[0] / $limit);
+    }
+
+    public function findByCriteria(array $criteria = [], int $page = 1, int $limit = 10): array
+    {
+        $firstResult = ($page - 1) * $limit;
+        $qb = $this->createFindByCriteriaQueryBuilder($criteria);
+        $qb
+            ->setFirstResult($firstResult)
+            ->setMaxResults($limit);
+
+        return $qb->getQuery()->getResult();
     }
 
 //    /**

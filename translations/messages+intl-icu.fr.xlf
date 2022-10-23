@@ -23,7 +23,7 @@
       </trans-unit>
       <trans-unit id="ObXqCgh" resname="user.self_registration.success">
         <source>user.self_registration.success</source>
-        <target>L'utilisateur a été créé avec succès!</target>
+        <target>L'utilisateur a été créé avec succès ! Un email de vérification vous a été envoyé.</target>
       </trans-unit>
       <trans-unit id="lVdcEsm" resname="mail.registration.from.title">
         <source>mail.registration.from.title</source>
@@ -306,10 +306,6 @@
         <source>home.main.description</source>
         <target>Nous sommes là pour vous informer et vous apporter notre aide!</target>
       </trans-unit>
-      <trans-unit id="TFPa6Gz" resname="article.show.date">
-        <source>article.show.date</source>
-        <target>Le {date} à {hour}</target>
-      </trans-unit>
       <trans-unit id="M3lfMwS" resname="article.show.show_more">
         <source>article.show.show_more</source>
         <target>Lire la suite</target>
@@ -321,6 +317,170 @@
       <trans-unit id="PCPiENo" resname="home.menu.main">
         <source>home.menu.main</source>
         <target>Accueil</target>
+      </trans-unit>
+      <trans-unit id="TFPa6Gz" resname="article.show.date">
+        <source>article.show.date</source>
+        <target>Le {date} à {hour}</target>
+      </trans-unit>
+      <trans-unit id="oTvdY02" resname="aria.label.pagination">
+        <source>aria.label.pagination</source>
+        <target>Pagination</target>
+      </trans-unit>
+      <trans-unit id=".9QzQdz" resname="home.main.search">
+        <source>home.main.search</source>
+        <target>Rechercher</target>
+      </trans-unit>
+      <trans-unit id="NB.kXFW" resname="home.main.search.field.placeholder">
+        <source>home.main.search.field.placeholder</source>
+        <target>Entrez un texte à rechercher</target>
+      </trans-unit>
+      <trans-unit id="kWGgv80" resname="home.main.search.field.label">
+        <source>home.main.search.field.label</source>
+        <target>Rechercher dans les articles</target>
+      </trans-unit>
+      <trans-unit id="HNEASmi" resname="article.show.date_and_author">
+        <source>article.show.date_and_author</source>
+        <target>Le {date} à {hour} par {author}</target>
+      </trans-unit>
+      <trans-unit id="W9tLEUX" resname="home.main.calendar">
+        <source>home.main.calendar</source>
+        <target>Agenda</target>
+      </trans-unit>
+      <trans-unit id="GdX5l3I" resname="event.modal.header.date">
+        <source>event.modal.header.date</source>
+        <target>Évènement du {startDate} à {startHour} au {endDate} à {endDate}</target>
+      </trans-unit>
+      <trans-unit id="Z4qnaRM" resname="event.modal.footer.close_button">
+        <source>event.modal.footer.close_button</source>
+        <target>Fermer</target>
+      </trans-unit>
+      <trans-unit id="GUuDIHI" resname="article.search.field.placeholder">
+        <source>article.search.field.placeholder</source>
+        <target>Entez un mot ou une phrase à rechercher</target>
+      </trans-unit>
+      <trans-unit id="HIjxSDZ" resname="article.search.field.label">
+        <source>article.search.field.label</source>
+        <target>Rechercher dans nos articles</target>
+      </trans-unit>
+      <trans-unit id="drrr43i" resname="article.delete.ask_confirmation">
+        <source>article.delete.ask_confirmation</source>
+        <target>Voulez-vous vraiment supprimer cet article ?</target>
+      </trans-unit>
+      <trans-unit id="B6ZNwKu" resname="carousel.previous">
+        <source>carousel.previous</source>
+        <target>Précédent</target>
+      </trans-unit>
+      <trans-unit id="WUFQIfB" resname="carousel.next">
+        <source>carousel.next</source>
+        <target>Suivant</target>
+      </trans-unit>
+      <trans-unit id="bp6r7rv" resname="user.search.field.placeholder">
+        <source>user.search.field.placeholder</source>
+        <target>Entrez un nom, prénom ou une adresse mail à rechercher</target>
+      </trans-unit>
+      <trans-unit id="ki2G1Hg" resname="user.search.field.label">
+        <source>user.search.field.label</source>
+        <target>Rechercher parmi nos membres</target>
+      </trans-unit>
+      <trans-unit id="GKUJ3h1" resname="user.delete.ask_confirmation">
+        <source>user.delete.ask_confirmation</source>
+        <target>Souhaitez-vous vraiment supprimer ce membre ?</target>
+      </trans-unit>
+      <trans-unit id="ojsyo4D" resname="article.details">
+        <source>article.details</source>
+        <target>Détails de l'article</target>
+      </trans-unit>
+      <trans-unit id="OyL0x6M" resname="user.registration.link">
+        <source>user.registration.link</source>
+        <target>Pas de compte ?</target>
+      </trans-unit>
+      <trans-unit id="X7sHlK." resname="user.registration.password">
+        <source>user.registration.password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="_J4cAhW" resname="user.registration.agree_terms">
+        <source>user.registration.agree_terms</source>
+        <target>J'accepte les conditions d'utilisation</target>
+      </trans-unit>
+      <trans-unit id="e.kD0r5" resname="page.registration.title">
+        <source>page.registration.title</source>
+        <target>Page de création de compte</target>
+      </trans-unit>
+      <trans-unit id="KqU2vqn" resname="user.registration.verification_email.expired">
+        <source>user.registration.verification_email.expired</source>
+        <target>Le lien de vérification a expiré. Vous allez en recevoir un nouveau.</target>
+      </trans-unit>
+      <trans-unit id="_HGTGQ2" resname="user.registration.gender">
+        <source>user.registration.gender</source>
+        <target>Sexe</target>
+      </trans-unit>
+      <trans-unit id="Ad9zdV6" resname="user.registration.first_name">
+        <source>user.registration.first_name</source>
+        <target>Prénom</target>
+      </trans-unit>
+      <trans-unit id="5Lc1Hva" resname="user.registration.last_name">
+        <source>user.registration.last_name</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="1VoGepL" resname="article.create.field.title">
+        <source>article.create.field.title</source>
+        <target>Titre</target>
+      </trans-unit>
+      <trans-unit id="8jJIiKV" resname="article.create.field.description">
+        <source>article.create.field.description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="7pTPRay" resname="article.create.field.medias">
+        <source>article.create.field.medias</source>
+        <target>Images</target>
+      </trans-unit>
+      <trans-unit id="qws.MT0" resname="user.create.field.email">
+        <source>user.create.field.email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="ZThelzm" resname="user.create.field.password">
+        <source>user.create.field.password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="VuxdloP" resname="user.create.field.gender">
+        <source>user.create.field.gender</source>
+        <target>Sexe</target>
+      </trans-unit>
+      <trans-unit id="ubxIcOd" resname="user.create.field.first_name">
+        <source>user.create.field.first_name</source>
+        <target>Prénom</target>
+      </trans-unit>
+      <trans-unit id="asPFZYf" resname="user.create.field.last_name">
+        <source>user.create.field.last_name</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="wwJP.hM" resname="user.create.field.roles">
+        <source>user.create.field.roles</source>
+        <target>Rôles</target>
+      </trans-unit>
+      <trans-unit id="c6vKh_S" resname="user.update.field.gender">
+        <source>user.update.field.gender</source>
+        <target>Sexe</target>
+      </trans-unit>
+      <trans-unit id="DQTMq6P" resname="user.update.field.first_name">
+        <source>user.update.field.first_name</source>
+        <target>Prénom</target>
+      </trans-unit>
+      <trans-unit id="vDXAEvx" resname="user.update.field.last_name">
+        <source>user.update.field.last_name</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="aqvL_c8" resname="user.update.field.roles">
+        <source>user.update.field.roles</source>
+        <target>Rôles</target>
+      </trans-unit>
+      <trans-unit id="zaH7a-7za8" resname="user.male">
+        <source>user.male</source>
+        <target>Homme</target>
+      </trans-unit>
+      <trans-unit id="5-fza8fzF" resname="user.female">
+        <source>user.female</source>
+        <target>Femme</target>
       </trans-unit>
     </body>
   </file>

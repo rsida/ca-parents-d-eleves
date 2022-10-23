@@ -19,16 +19,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/user')]
 class UserController extends AbstractController
 {
-    #[Route('/', name: 'app_user_list', methods: ['GET'])]
-    #[IsGranted('ROLE_CAN_SHOW_USER')]
-    public function displayList(UserRepository $userRepository): Response
-    {
-        return $this->render('user/list.html.twig', [
-            'users' => $userRepository->findByCriteria(),
-            'currentPage' => 'users',
-        ]);
-    }
-
     #[Route('/create', name: 'app_user_create', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_CAN_CREATE_USER')]
     public function create(
@@ -53,7 +43,7 @@ class UserController extends AbstractController
                 $userRepository->save($user, true);
                 $this->addFlash('success', $translator->trans('user.create.success'));
 
-                $dispatcher->dispatch(new UserEvent($user), UserEvent::ON_USER_CREATE);
+                $dispatcher->dispatch(new UserEvent($user), UserEvent::USER_CREATE);
             } else {
                 $this->addFlash('error', $translator->trans('user.create.error.generic'));
             }
@@ -93,7 +83,7 @@ class UserController extends AbstractController
             }
         }
 
-        return $this->render('article/update.html.twig', [
+        return $this->render('user/update.html.twig', [
             'form' => $form->createView(),
             'currentPage' => 'users',
         ]);
@@ -116,5 +106,25 @@ class UserController extends AbstractController
         }
 
         return $this->redirectToRoute('app_user_list');
+    }
+
+    #[Route('/', name: 'app_user_list', methods: ['GET'])]
+    #[IsGranted('ROLE_CAN_SHOW_USER')]
+    public function displayList(Request $request, UserRepository $userRepository): Response
+    {
+        $page = $request->query->get('page', 1);
+        $limit = $request->query->get('limit', 10);
+
+        return $this->render('user/list.html.twig', [
+            'currentPage' => 'users',
+            'currentPageIndex' => $page,
+            'currentLimit' => $limit,
+            'users' => $userRepository->findByCriteria([
+                'query' => $request->query->get('query')
+            ], $page, $limit),
+            'numberOfPage' => $userRepository->getNumberOfPageFromFindByCriteria([
+                'query' => $request->query->get('query')
+            ], $limit),
+        ]);
     }
 }

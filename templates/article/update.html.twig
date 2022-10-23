@@ -3,10 +3,40 @@
 {% block title %}{{ 'article.update.title'|trans }}{% endblock %}
 
 {% block body %}
-    {{ form_start(form) }}
-        {{ form_row(form.title) }}
-        {{ form_row(form.description) }}
+    <div class="container">
+        <div class="row mt-4">
+            <h1>{{ 'article.update.title'|trans }}</h1>
 
-    <button type="submit">{{ 'article.update'|trans }}</button>
-    {{ form_end(form) }}
+            {{ form_start(form) }}
+            <div class="mb-3">
+                {{ form_label(form.title, 'article.create.field.title'|trans, {attr: {class: 'form-label'}}) }}
+                {{ form_widget(form.title, {attr: {class: 'form-control'}}) }}
+            </div>
+            <div class="mb-3">
+                {{ form_label(form.description, 'article.create.field.description'|trans, {attr: {class: 'form-label'}}) }}
+                {{ form_widget(form.description) }}
+            </div>
+            <div class="mb-3">
+                {{ form_label(form.medias, 'article.create.field.medias'|trans, {attr: {class: 'form-label'}}) }}
+                {{ form_widget(form.medias, {attr: {class: 'form-control'}}) }}
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">{{ 'article.update'|trans }}</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdn.tiny.cloud/1/im9smzglqjzb95okb41mpg1ldam7pj2pp9ie5gl0ip4dqnhp/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script type="text/javascript">
+        $(function() {
+            tinymce.init({
+                selector: 'textarea.tiny-mce-textarea'
+            });
+        });
+    </script>
+{% endblock %}
+

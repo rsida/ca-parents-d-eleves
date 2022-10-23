@@ -15,22 +15,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/event')]
 class EventController extends AbstractController
 {
-    #[Route('/', name: 'app_event_list', methods: ['GET'])]
-    #[IsGranted('ROLE_CAN_SHOW_EVENT')]
-    public function index(EventRepository $eventRepository): Response
-    {
-        $event = new Event();
-        $form = $this->createForm(EventFormType::class, $event, [
-            'action' => $this->generateUrl('app_event_create'),
-        ]);
-
-        return $this->render('event/list.html.twig', [
-            'events' => $eventRepository->findByCriteria(),
-            'form' => $form->createView(),
-            'currentPage' => 'events',
-        ]);
-    }
-
     #[Route('/create', name: 'app_event_create', methods: ['POST'])]
     #[IsGranted('ROLE_CAN_CREATE_EVENT')]
     public function create(Request $request, EventRepository $eventRepository, TranslatorInterface $translator): Response
@@ -53,5 +37,34 @@ class EventController extends AbstractController
         }
 
         return $this->redirectToRoute('app_event_list');
+    }
+
+    #[Route('/{id}/modal', name: 'app_event_show_modal', methods: ['GET'])]
+    public function showModal(EventRepository $eventRepository, int $id): Response
+    {
+        $event = $eventRepository->find($id);
+        if (!$event instanceof Event) {
+            throw $this->createNotFoundException();
+        }
+
+        return $this->render('event/show.modal.html.twig', [
+            'event' => $event,
+        ]);
+    }
+
+    #[Route('/', name: 'app_event_list', methods: ['GET'])]
+    #[IsGranted('ROLE_CAN_SHOW_EVENT')]
+    public function index(EventRepository $eventRepository): Response
+    {
+        $event = new Event();
+        $form = $this->createForm(EventFormType::class, $event, [
+            'action' => $this->generateUrl('app_event_create'),
+        ]);
+
+        return $this->render('event/list.html.twig', [
+            'events' => $eventRepository->findByCriteria(),
+            'form' => $form->createView(),
+            'currentPage' => 'events',
+        ]);
     }
 }
