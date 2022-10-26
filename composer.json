@@ -37,6 +37,7 @@
         "symfony/rate-limiter": "6.1.*",
         "symfony/runtime": "6.1.*",
         "symfony/security-bundle": "6.1.*",
+        "symfony/sendgrid-mailer": "6.1.*",
         "symfony/serializer": "6.1.*",
         "symfony/string": "6.1.*",
         "symfony/translation": "6.1.*",
