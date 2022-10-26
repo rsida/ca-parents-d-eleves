@@ -2,6 +2,7 @@
 
 namespace App\Subscriber;
 
+use App\Entity\User;
 use App\Event\UserEvent;
 use App\Security\EmailVerifier;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -13,11 +14,13 @@ class UserSubscriber implements EventSubscriberInterface
 {
     private EmailVerifier $emailVerifier;
     private TranslatorInterface $translator;
+    private string $from;
 
-    public function __construct(EmailVerifier $emailVerifier, TranslatorInterface $translator)
+    public function __construct(EmailVerifier $emailVerifier, TranslatorInterface $translator, string $from)
     {
         $this->emailVerifier = $emailVerifier;
         $this->translator = $translator;
+        $this->from = $from;
     }
 
     public static function getSubscribedEvents(): array
@@ -30,10 +33,11 @@ class UserSubscriber implements EventSubscriberInterface
 
     public function sendVerificationEmailOnNewUser(UserEvent $event): void
     {
+        /** @var User $user */
         $user = $event->getUser();
         $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
             (new TemplatedEmail())
-                ->from(new Address('romain.sida@gmail.com', $this->translator->trans('mail.registration.from.title')))
+                ->from(new Address($this->from, $this->translator->trans('mail.registration.from.title')))
                 ->to($user->getEmail())
                 ->subject($this->translator->trans('mail.registration.verify.subject'))
                 ->htmlTemplate('registration/confirmation_email.html.twig')
