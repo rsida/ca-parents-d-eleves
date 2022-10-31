@@ -78,10 +78,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\JoinTable(name: 'participants_events')]
     private Collection $events;
 
+    #[ORM\OneToMany(mappedBy: 'author', targetEntity: Idea::class)]
+    private Collection $ideas;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
         $this->events = new ArrayCollection();
+        $this->ideas = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -344,5 +348,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return self::TRANS_GENDERS[$gender ?? $this->gender];
+    }
+
+    /**
+     * @return Collection<int, Idea>
+     */
+    public function getIdeas(): Collection
+    {
+        return $this->ideas;
+    }
+
+    public function addIdea(Idea $idea): self
+    {
+        if (!$this->ideas->contains($idea)) {
+            $this->ideas->add($idea);
+            $idea->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIdea(Idea $idea): self
+    {
+        if ($this->ideas->removeElement($idea)) {
+            // set the owning side to null (unless already changed)
+            if ($idea->getAuthor() === $this) {
+                $idea->setAuthor(null);
+            }
+        }
+
+        return $this;
     }
 }

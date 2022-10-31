@@ -17,7 +17,7 @@
     <body>
         {% include 'menu/main.html.twig' with {page: currentPage|default('articles')} %}
 
-        {% include 'tools/alerts.html.twig' %}
+        {% block alerts %}{% include 'tools/alerts.html.twig' %}{% endblock %}
 
         {% block body %}{% endblock %}
 

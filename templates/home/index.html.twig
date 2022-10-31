@@ -144,6 +144,17 @@
                     </div>
                 </div>
 
+                <!-- New idea widget -->
+                <div class="card mb-4">
+                    <div class="card-header">{{ 'home.main.new_idea'|trans }}</div>
+                    <div class="card-body">
+                        {{ form_start(formNewIdea) }}
+                            {{ form_widget(formNewIdea.content, {attr: {class: 'w-100'}}) }}
+                            <button type="submit" class="btn btn-secondary">{{ 'home.main.new_idea.submit_button'|trans }}</button>
+                        {{ form_end(formNewIdea) }}
+                    </div>
+                </div>
+
                 <!-- Calendar widget -->
                 <div class="card mb-4">
                     <div class="card-header">{{ 'home.main.calendar'|trans }}</div>
