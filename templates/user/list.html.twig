@@ -67,10 +67,11 @@
                         <td class="tab-row-actions">
                             {{ action_link('ROLE_CAN_UPDATE_USER', '<i class="bi bi-pencil-square"></i>', 'app_user_update', {id: user.id}, {
                                 'class': 'btn btn-secondary',
-                            }) }}
+                            }, user) }}
                             {{ action_link('ROLE_CAN_DELETE_USER', '<i class="bi bi-trash"></i>', 'app_user_delete', {id: user.id}, {
-                                'class': 'btn btn-danger',
-                            }) }}
+                                'class': 'btn btn-danger action-delete',
+                                'data-msg': 'user.delete.ask_confirmation'|trans|capitalize,
+                            }, user) }}
                         </td>
                     </tr>
                 {% endfor %}
@@ -78,17 +79,4 @@
             </table>
         </div>
     </div>
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript">
-    $(function() {
-        $('td.tab-row-actions').on('click', (e) => {
-            if (!confirm('{{ 'user.delete.ask_confirmation'|trans|capitalize }}')) {
-                e.preventDefault();
-            }
-        });
-    });
-    </script>
 {% endblock %}

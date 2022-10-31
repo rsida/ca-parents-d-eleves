@@ -29,5 +29,9 @@ services:
         arguments:
             $from: '%env(resolve:APP_FROM_EMAIL)%'
 
+    App\Security\UserActionVoter:
+        arguments:
+            $jsonRolePriorities: '%env(resolve:APP_ROLE_PRIORITIES)%'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

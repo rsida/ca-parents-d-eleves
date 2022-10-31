@@ -3,6 +3,8 @@
 namespace App\Twig;
 
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 use Symfony\Component\Security\Core\Security;
@@ -27,9 +29,9 @@ class UserActionExtension extends AbstractExtension
         ];
     }
 
-    public function createActionLink(string $role, string $label, string $path, array $parameters = [], array $attributes = []): string
+    public function createActionLink(string $role, string $label, string $path, array $parameters = [], array $attributes = [], ?UserInterface $user = null): string
     {
-        if (!$this->security->isGranted($role)) {
+        if (!$this->security->isGranted($role, $user)) {
             return '';
         }
 

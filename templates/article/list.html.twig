@@ -66,7 +66,8 @@
                                 'class': 'btn btn-secondary',
                             }) }}
                             {{ action_link('ROLE_CAN_DELETE_ARTICLE', '<i class="bi bi-trash"></i>', 'app_article_delete', {id: article.id}, {
-                                'class': 'btn btn-danger',
+                                'class': 'btn btn-danger action-delete',
+                                'data-msg': 'article.delete.ask_confirmation'|trans|capitalize,
                             }) }}
                         </td>
                     </tr>
@@ -75,17 +76,4 @@
             </table>
         </div>
     </div>
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript">
-        $(function() {
-            $('td.tab-row-actions').on('click', (e) => {
-                if (!confirm('{{ 'article.delete.ask_confirmation'|trans|capitalize }}')) {
-                    e.preventDefault();
-                }
-            });
-        });
-    </script>
 {% endblock %}

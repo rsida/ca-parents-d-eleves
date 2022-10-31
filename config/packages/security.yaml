@@ -1,4 +1,8 @@
 security:
+    access_decision_manager:
+        strategy: unanimous
+        allow_if_all_abstain: false
+
     role_hierarchy:
         ROLE_CAN_SHOW_ARTICLE: ROLE_USER
         ROLE_CAN_CREATE_ARTICLE: ROLE_USER
