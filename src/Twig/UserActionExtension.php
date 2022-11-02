@@ -29,9 +29,9 @@ class UserActionExtension extends AbstractExtension
         ];
     }
 
-    public function createActionLink(string $role, string $label, string $path, array $parameters = [], array $attributes = [], ?UserInterface $user = null): string
+    public function createActionLink(?string $role, string $label, string $path, array $parameters = [], array $attributes = [], ?UserInterface $user = null): string
     {
-        if (!$this->security->isGranted($role, $user)) {
+        if ($role && !$this->security->isGranted($role, $user)) {
             return '';
         }
 

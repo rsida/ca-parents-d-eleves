@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'topic.show'|trans }} - {{ topic.title|title }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row mt-4">
+            <!-- Topic content -->
+            <div class="col">
+                <div class="container">
+                    <h1>{{ topic.title|capitalize }}</h1>
+
+                    {% set first = (currentPageIndex - 1) * currentLimit %}
+                    {% set last = first + currentLimit - 1 %}
+                    {% for index, post in topic.posts|filter((post, index) => index >= first and index <= last ) %}
+                        <hr>
+                        <div class="row">
+                            <div class="col col-lg-2">
+                                <div class="card mb-4 rounded-3 shadow-sm {% if app.user and post.author.id == app.user.id %}border-primary{% endif %}">
+                                    <div class="card-header py-3 {% if app.user and post.author.id == app.user.id %}text-white bg-primary bg-gradient border-primary{% endif %}">
+                                        <h4 class="my-0 fw-normal">{{ post.author.firstname|capitalize }} {{ post.author.lastname|upper }}</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-3 mb-4">
+                                            <li><small>{{ 'formated.created_at'|trans({date: post.createdAt|date('d/m/Y'), hour: post.createdAt|date('H:i')}) }}</small></li>
+                                            <li><small>{{ 'formated.updated_at'|trans({date: post.updatedAt|date('d/m/Y'), hour: post.updatedAt|date('H:i')}) }}</small></li>
+                                            <li><small><a href="{{ path('app_forum_topic_signal_post', {slug: topic.slug, id: post.id}) }}">{{ 'post.signal.link'|trans|capitalize }}</a></small></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                {% if post.visible %}
+                                    {{ post.content|raw }}
+                                {% else %}
+                                    <span class="text-muted">{{ 'post.content.deleted'|trans|capitalize }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <!-- Pagination-->
+                    {% if numberOfPage > 1 %}
+                        <nav aria-label="{{ 'aria.label.pagination'|trans }}">
+                            <hr class="my-0">
+                            <ul class="pagination justify-content-center my-4">
+                                {% for i in 1..numberOfPage %}
+                                    <li class="page-item{% if currentPageIndex == i %} active" aria-current="page{% endif %}">
+                                        <a class="page-link" href="{{ path('app_forum_topic_show', {
+                                            slug: topic.slug,
+                                            page: i,
+                                            limit: currentLimit
+                                        }) }}">{{ i }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </nav>
+                    {% endif %}
+                    {% if is_granted('ROLE_USER') %}
+                    <hr>
+                    <div class="row">
+                        {{ form_start(form) }}
+                        <div class="mb-3">
+                            {{ form_label(form.content, 'post.create.field.content'|trans|capitalize, {attr: {class: 'form-label'}}) }}
+                            {{ form_widget(form.content, {required: false, attr: {class: 'tiny-mce-textarea form-control'}}) }}
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">{{ 'post.create'|trans }}</button>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

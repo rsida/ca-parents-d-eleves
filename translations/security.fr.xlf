@@ -81,6 +81,14 @@
         <source>Too many failed login attempts, please try again in %minutes% minutes.</source>
         <target>Plusieurs tentatives de connexion ont échoué, veuillez réessayer dans %minutes% minutes.</target>
       </trans-unit>
+      <trans-unit id="Poa57Z" resname="Bad credentials.">
+        <source>Bad credentials.</source>
+        <target>Merci de vérifier vos identifiants.</target>
+      </trans-unit>
+      <trans-unit id="P57ZzaPOZI" resname="The presented password is invalid.">
+        <source>The presented password is invalid.</source>
+        <target>Ce n'est pas le bon mot de passe.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

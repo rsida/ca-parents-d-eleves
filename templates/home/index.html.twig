@@ -149,8 +149,13 @@
                     <div class="card-header">{{ 'home.main.new_idea'|trans }}</div>
                     <div class="card-body">
                         {{ form_start(formNewIdea) }}
-                            {{ form_widget(formNewIdea.content, {attr: {class: 'w-100'}}) }}
-                            <button type="submit" class="btn btn-secondary">{{ 'home.main.new_idea.submit_button'|trans }}</button>
+                            <div class="mb-3">
+                                {{ form_label(formNewIdea.content, 'home.main.new_idea.content'|trans, {attr: {class: 'form-label w-100'}}) }}
+                                {{ form_widget(formNewIdea.content, {attr: {class: 'form-control w-100',  rows: 4}}) }}
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-secondary">{{ 'home.main.new_idea.submit_button'|trans }}</button>
+                            </div>
                         {{ form_end(formNewIdea) }}
                     </div>
                 </div>

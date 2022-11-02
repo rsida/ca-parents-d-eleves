@@ -11,6 +11,11 @@
                         {{ 'home.menu.main'|trans|title }}
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link{% if 'forums' == page %} active" aria-current="page{% endif %}" href="{{ path('app_forum_topic_list') }}">
+                        {{ 'topics.menu.main'|trans|title }}
+                    </a>
+                </li>
                 {% if is_granted('ROLE_CAN_SHOW_ARTICLE') %}
                 <li class="nav-item">
                     <a class="nav-link{% if 'articles' == page %} active" aria-current="page{% endif %}" href="{{ path('app_article_list') }}">
@@ -35,13 +40,13 @@
                 {% if is_granted('ROLE_USER') %}
                     <li class="nav-item">
                         <a class="nav-link btn btn-outline-danger" href="{{ path('app_logout') }}">
-                            {{ 'logout.menu.main'|trans|title }}
+                            {{ 'logout.menu.main'|trans|capitalize }}
                         </a>
                     </li>
                 {% else %}
                     <li class="nav-item">
                         <a class="nav-link btn btn-outline-primary{% if 'login' == page %} active" aria-current="page{% endif %}" href="{{ path('app_login') }}">
-                            {{ 'login.menu.main'|trans|title }}
+                            {{ 'login.menu.main'|trans|capitalize }}
                         </a>
                     </li>
                 {% endif %}

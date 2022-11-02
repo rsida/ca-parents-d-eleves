@@ -474,13 +474,121 @@
         <source>user.update.field.roles</source>
         <target>Rôles</target>
       </trans-unit>
-      <trans-unit id="zaH7a-7za8" resname="user.male">
+      <trans-unit id="irQjsUm" resname="user.male">
         <source>user.male</source>
         <target>Homme</target>
       </trans-unit>
-      <trans-unit id="5-fza8fzF" resname="user.female">
+      <trans-unit id="hcbpNLQ" resname="user.female">
         <source>user.female</source>
         <target>Femme</target>
+      </trans-unit>
+      <trans-unit id="A2Az2vG" resname="topic.create.form.error.generic">
+        <source>topic.create.form.error.generic</source>
+        <target>Impossible de créer ce topic</target>
+      </trans-unit>
+      <trans-unit id="leomMz0" resname="idea.create_from_home.success">
+        <source>idea.create_from_home.success</source>
+        <target>Votre suggestion a été soumise avec succès!</target>
+      </trans-unit>
+      <trans-unit id="KWfrJUz" resname="idea.create_from_home.generic_error">
+        <source>idea.create_from_home.generic_error</source>
+        <target>Une erreur est survenue lors de l'envoie de votre suggestion.</target>
+      </trans-unit>
+      <trans-unit id="XgHzWAW" resname="topics.menu.main">
+        <source>topics.menu.main</source>
+        <target>Forum</target>
+      </trans-unit>
+      <trans-unit id="MVNvQSn" resname="topic.create.title">
+        <source>topic.create.title</source>
+        <target>Créer un topic</target>
+      </trans-unit>
+      <trans-unit id="5Cqa9UA" resname="topic.create.field.title">
+        <source>topic.create.field.title</source>
+        <target>Titre</target>
+      </trans-unit>
+      <trans-unit id="luYDds." resname="topic.create.field.content">
+        <source>topic.create.field.content</source>
+        <target>Message</target>
+      </trans-unit>
+      <trans-unit id="dtUmdIZ" resname="topic.create">
+        <source>topic.create</source>
+        <target>Créer</target>
+      </trans-unit>
+      <trans-unit id=".PSJSvV" resname="topic.list">
+        <source>topic.list</source>
+        <target>Liste des topics</target>
+      </trans-unit>
+      <trans-unit id="4.jl9Oa" resname="topic.create.link">
+        <source>topic.create.link</source>
+        <target>Créer un topic</target>
+      </trans-unit>
+      <trans-unit id="F4hCKqU" resname="topic.search.field.placeholder">
+        <source>topic.search.field.placeholder</source>
+        <target>Rechercher dans les topics</target>
+      </trans-unit>
+      <trans-unit id="K5bsAtz" resname="topic.search.field.label">
+        <source>topic.search.field.label</source>
+        <target>Rechercher</target>
+      </trans-unit>
+      <trans-unit id="5PfWe4b" resname="topic.id">
+        <source>topic.id</source>
+        <target>#ID</target>
+      </trans-unit>
+      <trans-unit id="Cj_W1bq" resname="topic.title">
+        <source>topic.title</source>
+        <target>Titre</target>
+      </trans-unit>
+      <trans-unit id="gkjW5wv" resname="topic.author">
+        <source>topic.author</source>
+        <target>Auteur</target>
+      </trans-unit>
+      <trans-unit id="nuKTnHc" resname="topic.created_at">
+        <source>topic.created_at</source>
+        <target>Créé le</target>
+      </trans-unit>
+      <trans-unit id="dPENLe3" resname="topic.updated_at">
+        <source>topic.updated_at</source>
+        <target>Mis à jour le</target>
+      </trans-unit>
+      <trans-unit id="XxH0rcz" resname="topic.actions">
+        <source>topic.actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="zRm1Ne4" resname="topic.show">
+        <source>topic.show</source>
+        <target>Afficher</target>
+      </trans-unit>
+      <trans-unit id="cp07mE." resname="formated.created_at">
+        <source>formated.created_at</source>
+        <target>Créé le {date} à {hour}</target>
+      </trans-unit>
+      <trans-unit id="Mo9ebVs" resname="formated.updated_at">
+        <source>formated.updated_at</source>
+        <target>Mis à jour le {date} à {hour}</target>
+      </trans-unit>
+      <trans-unit id="Io5RkoL" resname="post.signal.link">
+        <source>post.signal.link</source>
+        <target>Signaler ce message</target>
+      </trans-unit>
+      <trans-unit id="xNfVCNr" resname="home.main.new_idea">
+        <source>home.main.new_idea</source>
+        <target>Suggestions</target>
+      </trans-unit>
+      <trans-unit id="x9_XNw2" resname="home.main.new_idea.content">
+        <source>home.main.new_idea.content</source>
+        <target>Votre suggestion</target>
+      </trans-unit>
+      <trans-unit id="fbUUh7A" resname="home.main.new_idea.submit_button">
+        <source>home.main.new_idea.submit_button</source>
+        <target>Soumettre</target>
+      </trans-unit>
+      <trans-unit id="tiMszsP" resname="topic.signal.success">
+        <source>topic.signal.success</source>
+        <target>Ce message a été signalé</target>
+      </trans-unit>
+      <trans-unit id="AT3oqwZ" resname="post.content.deleted">
+        <source>post.content.deleted</source>
+        <target>Le contenu du message a été supprimer par un administrateur.</target>
       </trans-unit>
     </body>
   </file>

@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'topic.list'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <table class="table">
+                <thead class="table-dark">
+                    <tr>
+                        <td colspan="4" class="align-middle">
+                            {{ action_link('ROLE_USER', 'topic.create.link'|trans, 'app_forum_create_topic', [], {
+                                'class': 'btn btn-primary',
+                            }) }}
+                        </td>
+                        <td class="align-middle">
+                            <form method="get">
+                                <div class="input-group">
+                                    <input class="form-control" type="text" name="query" placeholder="{{ 'topic.search.field.placeholder'|trans }}" aria-label="{{ 'topic.search.field.label'|trans }}" aria-describedby="button-search">
+                                    <button class="btn btn-primary" id="button-search" type="submit">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </td>
+                        <td class="align-middle">
+                            <!-- Pagination-->
+                            {% if numberOfPage > 1 %}
+                                <nav aria-label="{{ 'aria.label.pagination'|trans }}">
+                                    <ul class="pagination justify-content-center my-4">
+                                        {% for i in 1..numberOfPage %}
+                                            <li class="page-item{% if currentPageIndex == i %} active" aria-current="page{% endif %}">
+                                                <a class="page-link" href="{{ path('app_forum_topic_list', {
+                                                    page: i,
+                                                    limit: currentLimit
+                                                }) }}">{{ i }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </nav>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'topic.id'|trans }}</td>
+                        <td>{{ 'topic.title'|trans }}</td>
+                        <td>{{ 'topic.author'|trans }}</td>
+                        <td>{{ 'topic.created_at'|trans }}</td>
+                        <td>{{ 'topic.updated_at'|trans }}</td>
+                        <td>{{ 'topic.actions'|trans }}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for topic in topics %}
+                    <tr>
+                        <td>{{ topic.id }}</td>
+                        <td>{{ topic.title|title }}</td>
+                        <td>{{ topic.author.firstName ~ ' ' ~ topic.author.lastName }}</td>
+                        <td>{{ topic.createdAt|date('d/m/Y à H:i:s') }}</td>
+                        <td>{{ topic.updatedAt|date('d/m/Y à H:i:s') }}</td>
+                        <td>
+                            {{ action_link(null, '<i class="bi bi-eye"></i>', 'app_forum_topic_show', {slug: topic.slug}, {
+                                'class': 'btn btn-secondary',
+                            }) }}
+{#                            {{ action_link('ROLE_USER', '<i class="bi bi-pencil-square"></i>', 'app_topic_update', {id: topic.id}, {#}
+{#                                'class': 'btn btn-secondary',#}
+{#                            }) }}#}
+{#                            {{ action_link('ROLE_USER', '<i class="bi bi-trash"></i>', 'app_topic_delete', {id: topic.id}, {#}
+{#                                'class': 'btn btn-danger action-delete',#}
+{#                                'data-msg': 'topic.delete.ask_confirmation'|trans|capitalize,#}
+{#                            }) }}#}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

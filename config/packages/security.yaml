@@ -43,6 +43,7 @@ security:
                 login_path: app_login
                 check_path: app_login
                 enable_csrf: true
+                use_referer: true
             logout:
                 path: app_logout
             login_throttling:
