@@ -1,0 +1,45 @@
+<table class="table">
+    <thead class="table-dark">
+    <tr>
+        <td class="align-middle">
+            <form method="get">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="query" placeholder="{{ 'communication.idea.search.field.placeholder'|trans|capitalize }}" aria-label="{{ 'communication.idea.search.field.label'|trans }}" aria-describedby="button-search">
+                    <button class="btn btn-primary" id="button-search" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </form>
+        </td>
+        <td class="align-middle">
+            <!-- Pagination-->
+            {% if numberOfPage > 1 %}
+                <nav aria-label="{{ 'aria.label.pagination'|trans }}">
+                    <ul class="pagination justify-content-center my-4">
+                        {% for i in 1..numberOfPage %}
+                            <li class="page-item{% if currentPageIndex == i %} active" aria-current="page{% endif %}">
+                                <a class="page-link" href="{{ path('app_communication_idea', {
+                                    page: i,
+                                    limit: currentLimit
+                                }) }}">{{ i }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            {% endif %}
+        </td>
+    </tr>
+    <tr>
+        <td>{{ 'idea.content'|trans|capitalize }}</td>
+        <td>{{ 'idea.date'|trans|capitalize }}</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for idea in ideas %}
+        <tr>
+            <td>{{ idea.content }}</td>
+            <td>{{ idea.createdAt|date('d/m/Y à H:i:s') }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

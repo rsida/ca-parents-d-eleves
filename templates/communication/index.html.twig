@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'communications.index'|trans }}{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link{% if 'idea' == currentTab %}active" aria-current="page{% endif %}" href="{{ path('app_communication_idea') }}">
+                                {{ 'communication.tab.idea'|trans|capitalize }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-10">
+            {% if 'idea' == currentTab %}
+                {% include 'communication/idea.html.twig' %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

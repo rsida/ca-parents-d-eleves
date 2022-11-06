@@ -23,17 +23,24 @@
                     </a>
                 </li>
                 {% endif %}
-                {% if is_granted('ROLE_CAN_SHOW_USER') %}
-                <li class="nav-item">
-                    <a class="nav-link{% if 'users' == page %} active" aria-current="page{% endif %}" href="{{ path('app_user_list') }}">
-                        {{ 'users.menu.main'|trans|title }}
-                    </a>
-                </li>
-                {% endif %}
                 {% if is_granted('ROLE_CAN_SHOW_EVENT') %}
                 <li class="nav-item">
                     <a class="nav-link{% if 'events' == page %} active" aria-current="page{% endif %}" href="{{ path('app_event_list') }}">
                         {{ 'events.menu.main'|trans|title }}
+                    </a>
+                </li>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item">
+                        <a class="nav-link{% if 'communications' == page %} active" aria-current="page{% endif %}" href="{{ path('app_communication') }}">
+                            {{ 'communications.menu.main'|trans|title }}
+                        </a>
+                    </li>
+                {% endif %}
+                {% if is_granted('ROLE_CAN_SHOW_USER') %}
+                <li class="nav-item">
+                    <a class="nav-link{% if 'users' == page %} active" aria-current="page{% endif %}" href="{{ path('app_user_list') }}">
+                        {{ 'users.menu.main'|trans|title }}
                     </a>
                 </li>
                 {% endif %}

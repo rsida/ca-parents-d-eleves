@@ -590,6 +590,70 @@
         <source>post.content.deleted</source>
         <target>Le contenu du message a été supprimer par un administrateur.</target>
       </trans-unit>
+      <trans-unit id="DSOv23s" resname="post.create.form.error.generic">
+        <source>post.create.form.error.generic</source>
+        <target>Une erreur c'est produite lors de la création de votre message.</target>
+      </trans-unit>
+      <trans-unit id="EaMmRUe" resname="post.create.field.content">
+        <source>post.create.field.content</source>
+        <target>Votre message</target>
+      </trans-unit>
+      <trans-unit id="oJwQIYD" resname="post.create">
+        <source>post.create</source>
+        <target>Poster</target>
+      </trans-unit>
+      <trans-unit id="uJMyLXe" resname="event.title">
+        <source>event.title</source>
+        <target>Titre</target>
+      </trans-unit>
+      <trans-unit id="By1wRZd" resname="event.description">
+        <source>event.description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="SdTvqPI" resname="event.start_at">
+        <source>event.start_at</source>
+        <target>Commence le</target>
+      </trans-unit>
+      <trans-unit id="9OWgiqg" resname="event.end_at">
+        <source>event.end_at</source>
+        <target>Fini le</target>
+      </trans-unit>
+      <trans-unit id="OnulGXa" resname="event.participants">
+        <source>event.participants</source>
+        <target>Les participants</target>
+      </trans-unit>
+      <trans-unit id="hrduW0i" resname="event.participants.tips">
+        <source>event.participants.tips</source>
+        <target>CTRL + Clic pour sélectionner plusieurs</target>
+      </trans-unit>
+      <trans-unit id="f04hdR7" resname="communications.menu.main">
+        <source>communications.menu.main</source>
+        <target>Communication</target>
+      </trans-unit>
+      <trans-unit id="_aaR7vb" resname="communication.idea.search.field.placeholder">
+        <source>communication.idea.search.field.placeholder</source>
+        <target>Entrez un mot à rechercher</target>
+      </trans-unit>
+      <trans-unit id="U9BgBq7" resname="communication.idea.search.field.label">
+        <source>communication.idea.search.field.label</source>
+        <target>Rechercher</target>
+      </trans-unit>
+      <trans-unit id="d1cSkW9" resname="idea.content">
+        <source>idea.content</source>
+        <target>Contenu</target>
+      </trans-unit>
+      <trans-unit id="eiYrACM" resname="idea.date">
+        <source>idea.date</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="NyTz4la" resname="communications.index">
+        <source>communications.index</source>
+        <target>Les communications</target>
+      </trans-unit>
+      <trans-unit id="KkpMhJP" resname="communication.tab.idea">
+        <source>communication.tab.idea</source>
+        <target>Idées</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

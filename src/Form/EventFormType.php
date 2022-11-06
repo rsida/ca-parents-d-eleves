@@ -22,7 +22,6 @@ class EventFormType extends AbstractType
             ->add('participants', EntityType::class, [
                 'class' => User::class,
                 'multiple' => true,
-                'expanded' => true,
                 'choice_label' => 'email',
                 'query_builder' => function(UserRepository $userRepository) {
                     return $userRepository->createFindByCriteriaQueryBuilder();

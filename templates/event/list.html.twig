@@ -23,24 +23,29 @@
                 <div class="modal-body">
                     {{ form_start(form) }}
                     <div class="mb-3">
-                        {{ form_label(form.title, null, {attr: {class: 'form-label'}}) }}
+                        {{ form_label(form.title, 'event.title'|trans, {attr: {class: 'form-label'}}) }}
                         {{ form_widget(form.title, {attr: {class: 'form-control'}}) }}
                         {{ form_help(form.title, {attr: {class: 'form-text'}}) }}
                     </div>
                     <div class="mb-3">
-                        {{ form_label(form.description, null, {attr: {class: 'form-label'}}) }}
+                        {{ form_label(form.description, 'event.description'|trans, {attr: {class: 'form-label'}}) }}
                         {{ form_widget(form.description, {attr: {class: 'form-control'}}) }}
                         {{ form_help(form.description, {attr: {class: 'form-text'}}) }}
                     </div>
                     <div class="mb-3">
-                        {{ form_label(form.startAt, null, {attr: {class: 'form-label'}}) }}
+                        {{ form_label(form.startAt, 'event.start_at'|trans, {attr: {class: 'form-label'}}) }}
                         {{ form_widget(form.startAt, {attr: {class: 'form-control'}}) }}
                         {{ form_help(form.startAt, {attr: {class: 'form-text'}}) }}
                     </div>
                     <div class="mb-3">
-                        {{ form_label(form.endAt, null, {attr: {class: 'form-label'}}) }}
+                        {{ form_label(form.endAt, 'event.end_at'|trans, {attr: {class: 'form-label'}}) }}
                         {{ form_widget(form.endAt, {attr: {class: 'form-control'}}) }}
                         {{ form_help(form.endAt, {attr: {class: 'form-text'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(form.participants, 'event.participants'|trans, {attr: {class: 'form-label'}}) }}
+                        {{ form_widget(form.participants, {attr: {class: 'form-select'}}) }}
+                        {{ form_help(form.participants, {attr: {class: 'form-text'}}) }}
                     </div>
                     {{ form_end(form) }}
                 </div>

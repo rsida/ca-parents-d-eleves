@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Idea;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -37,6 +38,42 @@ class IdeaRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function getNumberOfPageFromFindByCriteria(array $criteria = [], int $limit = 7): int
+    {
+        $qb = $this->createFindByCriteriaQueryBuilder($criteria);
+        $qb->select('count(i.id)');
+        return ceil($qb->getQuery()->getSingleColumnResult()[0] / $limit);
+    }
+
+    public function findByCriteria(array $criteria = [], int $page = 1, int $limit = 7): array
+    {
+        $qb = $this->createFindByCriteriaQueryBuilder($criteria);
+
+        $order = $criteria['order'] ?? 'DESC';
+        $sort = 'i.'.($criteria['orderBy'] ?? 'updatedAt');
+        $qb->addOrderBy($sort, $order);
+
+        $firstResult = ($page - 1) * $limit;
+        $qb
+            ->setFirstResult($firstResult)
+            ->setMaxResults($limit);
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function createFindByCriteriaQueryBuilder(array $criteria = []): QueryBuilder
+    {
+        $qb = $this->createQueryBuilder('i');
+
+        if (!empty($criteria['query'])) {
+            $qb
+                ->andWhere('i.content LIKE :query')
+                ->setParameter('query', '%'.$criteria['query'].'%');
+        }
+
+        return $qb;
     }
 
 //    /**
