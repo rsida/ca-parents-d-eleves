@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link{% if 'idea' == currentTab %}active" aria-current="page{% endif %}" href="{{ path('app_communication_idea') }}">
+                            <a class="nav-link{% if 'idea' == currentTab %} active" aria-current="page{% endif %}" href="{{ path('app_communication_idea') }}">
                                 {{ 'communication.tab.idea'|trans|capitalize }}
                             </a>
                         </li>
