@@ -654,6 +654,42 @@
         <source>communication.tab.idea</source>
         <target>Idées</target>
       </trans-unit>
+      <trans-unit id="bhvzB0b" resname="communications.contact.subject">
+        <source>communications.contact.subject</source>
+        <target>Demande de contact</target>
+      </trans-unit>
+      <trans-unit id="c1kXFmz" resname="communication.contact.form.success">
+        <source>communication.contact.form.success</source>
+        <target>Votre message a été envoyé!</target>
+      </trans-unit>
+      <trans-unit id="gRLNzpO" resname="communication.contact.form.error.global">
+        <source>communication.contact.form.error.global</source>
+        <target>Une erreur empêche l'envoi de votre demande de contact. Merci de réessayer ultérieurement.</target>
+      </trans-unit>
+      <trans-unit id="BXZcRup" resname="contact.menu.main">
+        <source>contact.menu.main</source>
+        <target>Contact</target>
+      </trans-unit>
+      <trans-unit id="V6An5qD" resname="contact.title">
+        <source>contact.title</source>
+        <target>Demande de contact</target>
+      </trans-unit>
+      <trans-unit id="DBV1LSH" resname="contact.form.from.email.field">
+        <source>contact.form.from.email.field</source>
+        <target>Votre adresse mail</target>
+      </trans-unit>
+      <trans-unit id="9TfO2Vm" resname="contact.form.content.field">
+        <source>contact.form.content.field</source>
+        <target>Votre message</target>
+      </trans-unit>
+      <trans-unit id="uPPv5Pr" resname="contact.form.submit">
+        <source>contact.form.submit</source>
+        <target>Envoyer</target>
+      </trans-unit>
+      <trans-unit id="qB0IOu0" resname="mail.simple.sender.label">
+        <source>mail.simple.sender.label</source>
+        <target>Adresse email du demandeur:</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

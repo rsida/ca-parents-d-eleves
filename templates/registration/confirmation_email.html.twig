@@ -1,6 +1,10 @@
-<h1>{{ 'mail.verify.title.h1'|trans|title }}</h1>
+{% extends 'mail/mail.base.html.twig' %}
 
+{% block title %}{{ 'mail.verify.title.h1'|trans|title }}{% endblock %}
+
+{% block content %}
 {{ 'mail.verify.content'|trans({
     '%signedUrl%': signedUrl,
     '%expiresAt%': expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle')
 })|raw|nl2br }}
+{% endblock %}

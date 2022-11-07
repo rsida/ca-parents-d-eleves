@@ -1,0 +1,8 @@
+{% extends 'mail/mail.base.html.twig' %}
+
+{% block title %}{{ subject|title }}{% endblock %}
+
+{% block content %}
+    <p style="font-size: 14px; line-height: 140%;">{{ 'mail.simple.sender.label'|trans }} {{ senderEmail }}</p>
+    {{ content|raw }}
+{% endblock %}

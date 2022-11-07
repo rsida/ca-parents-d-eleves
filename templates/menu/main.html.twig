@@ -37,6 +37,11 @@
                         </a>
                     </li>
                 {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link{% if 'contact' == page %} active" aria-current="page{% endif %}" href="{{ path('app_communication_contact') }}">
+                        {{ 'contact.menu.main'|trans|title }}
+                    </a>
+                </li>
                 {% if is_granted('ROLE_CAN_SHOW_USER') %}
                 <li class="nav-item">
                     <a class="nav-link{% if 'users' == page %} active" aria-current="page{% endif %}" href="{{ path('app_user_list') }}">
